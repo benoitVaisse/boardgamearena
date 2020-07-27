@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BoardGameArena.Models.Game>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="container">
+        <h1 class="display-4">Voici nos Jeux</h1>
+        <hr />
+
+        <div class="my-4">
+            @if(Model.Count() >0)
+            {
+                <div class="row">
+                    @foreach (var Game in Model) {
+                        <partial name="~/Views/Game/_partials/OneGame.cshtml" model="@Game" />
+                    }
+                </div>
+            }
+            else
+            {
+                <h3>Pas de jeux enregistrés</h3>
+            }
+        </div>
+
+    </div>

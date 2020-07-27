@@ -1,0 +1,43 @@
+﻿@model Part
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@Model.Title</h1>
+<hr />
+
+<form asp-controller="Part" asp-action="Edit" asp-route-id="@Model.Id" method="post" >
+
+    <input type="hidden" name="PartId" value="@Model.Id" />
+
+    <div class="form-group">
+
+
+        <div class="row">
+            @foreach (PartPlayer PPlayer in Model.PartPlayers)
+            {
+                <div class="col-md-6 col-sm-12 card">
+                    <h3>@PPlayer.Player.UserName</h3>
+                    <div class="card-body form-group">
+                        <label for="score_@PPlayer.Player.Id"> Score  : </label>
+                        <input class="form-control" type="number" name="score[@PPlayer.Player.Id]" id="score_@PPlayer.Player.Id" value="@PPlayer.Score" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div>
+            <label for="isFinish"> La partie est-elle ternimé ? </label>
+            <label for="isFinish"> Oui </label>
+            <input type="radio" name="isFinish" value="true" id="isFinish_true" />
+
+            <label for="isFinish_false"> Non </label>
+            <input type="radio" name="isFinish" value="false" id="isFinish_false" />
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary"> Valider </button>
+        </div>
+    </div>
+</form>
+

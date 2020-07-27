@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AppRole>
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Roles";
+
+}
+
+@*si on a des roles*@
+@if (Model.Any())
+{
+    <a class="btn btn-primary" asp-controller="Admin" asp-action="CreateRole">Ajouter un Rôle</a>
+
+    foreach(var role in Model)
+    {
+        <div class="card my-2">
+            <div class="card-header">
+                Role Id : @role.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> @role.Name</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-controller="Admin" asp-action="EditRole" asp-route-id="@role.Id">Editer</a>
+            </div>
+
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            Aucun Role
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"> Créer votre premier Role</h5>
+            <a class="btn btn-primary" asp-controller="Admin" asp-action="CreateRole" >Créer</a>
+        </div>
+    </div>
+}

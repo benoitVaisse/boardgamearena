@@ -1,0 +1,47 @@
+﻿@model BoardGameArena.Models.Game
+
+@{
+    ViewData["Title"] = "Detail";
+}
+ 
+<div>
+    <div class="row">
+
+        <h2 class="col-md-12"> @Model.Title </h2>
+        <hr />
+
+        <div class="row">
+            @if(Model.CoverImage != null)
+            {
+                <div class="col-md-4 col-sm-12">
+                    <img src="~/img/game/@Model.CoverImage" class="img-thumbnail" alt="Alternate Text" />
+                </div>
+            }
+            <div class="col-md-4 col-sm-12">
+                <p> @Model.NbMin @(Model.NbMin != Model.NbMax ? "- " +Model.NbMax.ToString() : "") Joueur(s)</p>
+            </div>
+
+        </div>
+
+        <div class="desciption my-2 col-md-12">
+            <p>Description</p>
+            @Html.Raw(Model.Description)
+        </div>
+        <div class="rules my-2 col-md-12">
+            <p>Règles</p>
+            @Html.Raw(Model.Rules)
+        </div>
+    </div>
+</div>
+<div>
+    @if (User.IsInRole("Admin"))
+    {
+        <a class="btn btn-primary" asp-controller="Game" asp-action="Edit" asp-route-id="@Model.Id">Modifier ce jeu</a>
+        <a class="btn btn-info" asp-route="admin_games">Liste des jeux admin</a>
+    }
+    else
+    {
+
+    }
+    <a class="btn btn-info" asp-action="Index">Voir tous les Jeux</a>
+</div>

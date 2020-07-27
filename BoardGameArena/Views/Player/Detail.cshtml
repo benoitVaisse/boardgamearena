@@ -1,0 +1,18 @@
+﻿@model BoardGameArena.Models.Player
+
+@{
+    ViewData["Title"] = "Player";
+}
+
+
+<div>
+     <h3 class="col-md-12"> @Model.UserName </h3>
+     <hr />
+    <div class="row">
+
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editer</a> |
+    <a asp-action="Index">Retour a la liste des Joueurs</a>
+</div>

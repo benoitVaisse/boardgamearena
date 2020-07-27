@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+
+    IEnumerable<Game> Games = this.ViewBag.Games as IEnumerable<Game>;
+    IEnumerable<Player> Players = this.ViewBag.Players as IEnumerable<Player>;
+}
+
+<h1>Create</h1>
+
+<h4>Part</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-12 form-group my-2">
+                <label for="title">Nom de la partie</label>
+                <input class="form-control" type="text" name="title" id="title" value="" required/>
+
+            </div>
+            <div class="my-2 col-md-12 form-group">
+                <label for="id_game">Jeu</label>
+                <select name="id_game" id="id_game" class="form-control">
+                    @foreach (Game Game in Games)
+                    {
+                        <option value="@Game.Id">@Game.Title</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-12 form-group my-2">
+                <label for="id_players">Selection des Joueur</label>
+                <select multiple="multiple" name="id_players[]" id="id_players" class="form-control">
+                    @foreach (Player Player in Players)
+                    {
+                        <option value="@Player.Id">@Player.UserName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group my-2">
+                <input type="submit" value="Création de la partie" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,41 @@
+﻿@model Part
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    <div class="card">
+        <h2 class="card-header">@Model.Title</h2>
+
+        <div class="card-body">
+
+            <h3>@Model.Game.Title</h3>
+            <h4>Joueurs</h4>
+            <div class="joueur">
+                <table>
+                    @foreach (PartPlayer Player in Model.PartPlayers)
+                    {
+                        <tr>
+                            <td class="col text-left">@Player.Player.UserName</td>
+                            <td class="col">@Player.Score</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="my-3">
+                @if (Model.IsFinish)
+                {
+                    <span>La partie est terminé</span>
+                }
+                else
+                {
+                    <span>La partie est toujours en cours</span>
+                }
+
+            </div>
+
+            <div class="link-part">
+                <a asp-controller="Part" asp-action="Detail" asp-route-id="@Model.Id" class="btn btn-primary"> Voir la partie </a>
+            </div>
+
+        </div>
+    </div>

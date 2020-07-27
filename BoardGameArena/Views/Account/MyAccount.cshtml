@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Mon Compte";
+    var User = this.ViewBag.user;
+    IEnumerable<Part> Parts = this.ViewBag.parts;
+
+    var path = (User.Photo != null) ? "~/upload/" + User.Id + "/" + User.Photo : "~/img/anonyme.jpg";
+}
+
+    <div class="card">
+        <div class="card-header">
+            <h1>Mon Compte</h1>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-2">
+                <img src="@path" alt="" class="img-thumbnail avatar avatar-mid" asp-append-version="true" />
+            </div>
+            <div class="col-md-4">
+                <h3>@User.UserName</h3>
+                <h3>@User.Email</h3>
+            </div>
+        </div>
+        <div class="card-footer text-right" >
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Edit"> Modifier </a>
+        </div>
+    </div>
+
+    <div class="my-3">
+        <h1>Mes Parties</h1>
+        @if (Parts.Any())
+        {
+            <h4>Nombre de Partie Joué : @Parts.Count()</h4>
+
+            foreach(var Part in Parts)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        @Part.Title
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"> @Part.Game.Title</h3>
+                        @foreach(var PP in Part.PartPlayers)
+                        {
+                            <h5>@PP.Player.UserName</h5>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h2>Aucune partie jouée</h2>
+        }
+    </div>
+

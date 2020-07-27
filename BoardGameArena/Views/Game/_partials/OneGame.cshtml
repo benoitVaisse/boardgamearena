@@ -1,0 +1,10 @@
+﻿@model Game
+
+
+<div class="card  my-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text"> @Model.NbMin @((Model.NbMin != Model.NbMax) ? "- "+ Model.NbMax : "") Joueur(s) </p>
+        <a asp-route="GameDetail" asp-route-id="@Model.Id" > Détail du jeu </a>
+    </div>
+</div>

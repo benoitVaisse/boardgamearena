@@ -1,0 +1,20 @@
+﻿@model BoardGameArena.Models.Part
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div>
+    <h2 class="title-center">@Model.Title</h2>
+    <hr class="hr-blue" />
+    <div class="row">
+        <div class = "col-md-12">
+            <h3><a class="btn btn-info" asp-controller="Game" asp-action="Detail" asp-route-id="@Model.Game.Id"> @Model.Game.Title </a></h3>
+        </div>
+        
+    </div>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a class="btn btn-secondary" Asp-controller="Home" asp-action="Index">Back to List</a>
+</div>

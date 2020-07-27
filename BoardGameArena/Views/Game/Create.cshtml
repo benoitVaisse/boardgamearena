@@ -1,0 +1,63 @@
+﻿@model BoardGameArena.ViewModels.FormGameViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Game</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-route="admin_game_create_post" enctype="multipart/form-data" method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Titre du Jeu</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoverImage" class="control-label"></label>
+                <input asp-for="CoverImage" class="form-control" />
+                <span asp-validation-for="CoverImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NbMin" class="control-label">Nombre de joueurs au minimum</label>
+                <input asp-for="NbMin" class="form-control" />
+                <span asp-validation-for="NbMin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NbMax" class="control-label">Nombre de joueurs au maximum</label>
+                <input asp-for="NbMax" class="form-control" />
+                <span asp-validation-for="NbMax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"> Description </label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rules" class="control-label"> Règles de jeux </label>
+                <textarea asp-for="Rules" class="form-control"></textarea>
+                <span asp-validation-for="Rules" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        CKEDITOR.replace("Description");
+        CKEDITOR.replace("Rules");
+    </script>
+}
