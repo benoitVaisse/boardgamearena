@@ -35,20 +35,6 @@ namespace BoardGameArena.Controllers
             return View(Player);
         }
 
-        [HttpGet]
-        public IActionResult Edit(int Id)
-        {
-            Player Player = this.playerRepository.FindOneByid(Id);
-            return View(Player);
-        }
-
-        [HttpPost]
-        public IActionResult Update(Player Player)
-        {
-            this.playerRepository.Update(Player);
-            return RedirectToAction("Detail", new { Id = Player.Id });
-        }
-
 
         //-----------------------ADMIN ------------------------------
 

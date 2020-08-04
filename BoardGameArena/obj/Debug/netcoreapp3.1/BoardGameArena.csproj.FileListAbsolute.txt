@@ -203,3 +203,4 @@ D:\projet\BoardGameArena\BoardGameArena\obj\Debug\netcoreapp3.1\Razor\Views\Game
 D:\projet\BoardGameArena\BoardGameArena\obj\Debug\netcoreapp3.1\Razor\Views\Player\IndexAdmin.cshtml.g.cs
 D:\projet\BoardGameArena\BoardGameArena\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_partials\_carousel.cshtml.g.cs
 D:\projet\BoardGameArena\BoardGameArena\bin\Debug\netcoreapp3.1\appsettings.exemple.json
+D:\projet\BoardGameArena\BoardGameArena\obj\Debug\netcoreapp3.1\BoardGameArena.csprojAssemblyReference.cache
